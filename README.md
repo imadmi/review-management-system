@@ -45,7 +45,7 @@ docker-compose up -d
 
 4. Create a `.env` file in the root directory:
 ```env
-DATABASE_URL="postgresql://postgres:postgres@localhost:5432/reviews?schema=public"
+DATABASE_URL="postgresql://abc:DEVELOPMENT_PASSWORD@localhost:5434/DEVELOPMENT_DB?schema=public"
 ```
 
 5. Run Prisma migrations:
