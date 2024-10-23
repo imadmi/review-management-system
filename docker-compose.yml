@@ -1,0 +1,38 @@
+version: '3.8'
+services:
+  database:
+    image: postgres
+    environment:
+      POSTGRES_USER: abc
+      POSTGRES_PASSWORD: DEVELOPMENT_PASSWORD
+      POSTGRES_DB: DEVELOPMENT_DB
+    ports:
+      - 5434:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - dev_network
+
+  # nextjs:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - 3000:3000
+  #   environment:
+  #     - DATABASE_URL=postgresql://abc:DEVELOPMENT_PASSWORD@database:5432/DEVELOPMENT_DB?schema=public
+  #     - NODE_ENV=development
+  #   depends_on:
+  #     - database
+  #   volumes:
+  #     - .:/app
+  #     - /app/node_modules
+  #     - /app/.next
+  #   networks:
+  #     - dev_network
+
+volumes:
+  postgres_data:
+
+networks:
+  dev_network:
